@@ -1,5 +1,7 @@
+'use client';
 // app/page.tsx (or pages/index.tsx)
 // Minimal, premium landing for PHUΔD. Uses only Tailwind (no extra deps).
+import type { ReactNode } from 'react';
 
 export default function Page() {
   return (
@@ -222,7 +224,8 @@ export default function Page() {
   )
 }
 
-function Badge({ children }: { children: React.ReactNode }) {
+function Badge({ children }: { children: ReactNode }) {
+
   return (
     <span className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-3 py-1">{children}</span>
   )
