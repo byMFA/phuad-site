@@ -1,6 +1,5 @@
-// postcss.config.mjs
 export default {
   plugins: {
-    '@tailwindcss/postcss': {},  // v4'ün yeni postcss plugini
+    "@tailwindcss/postcss": {}, // Tailwind v4 postcss eklentisi
   },
 };
