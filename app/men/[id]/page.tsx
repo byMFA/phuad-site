@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { menProducts } from "@/data/menProducts";
 
 export const dynamic = "force-static"; // CDN cache-friendly
-export const revalidate = 60 * 60; // 1 saat
+export const revalidate = 3600; // 1 saat
 
 // 1) Statik yolları üret (SSG)
 export function generateStaticParams() {

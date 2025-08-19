@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { womenProducts } from "@/data/womenProducts";
 
 export const dynamic = "force-static";
-export const revalidate = 60 * 60;
+export const revalidate = 3600;
 
 export function generateStaticParams() {
   return womenProducts.map((p) => ({ id: p.id }));
