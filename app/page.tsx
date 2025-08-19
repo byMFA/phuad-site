@@ -11,15 +11,19 @@ export default function HomePage() {
       <HeaderSimple />
 
       <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        {/* Sayfa başlığı */}
         <h2 className="text-center text-2xl sm:text-3xl font-medium my-6 sm:my-10">
-          Koleksiyon ΔT
+             ...
         </h2>
 
-        {/* İki büyük kategori kartı */}
         <section className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 pb-12 sm:pb-16">
           {categories.map((c) => (
-            <CategoryCard key={c.id} title={c.title} image={c.image} alt={c.alt} />
+            <CategoryCard
+              key={c.id}
+              title={c.title}
+              image={c.image}
+              alt={c.alt}
+              href={c.href}
+            />
           ))}
         </section>
       </main>
