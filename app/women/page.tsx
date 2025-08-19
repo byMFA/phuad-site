@@ -29,7 +29,7 @@ export default function WomenListingPage() {
                 image={bracelet.image}
                 alt={bracelet.alt}
                 href={`/women/${bracelet.id}`}
-                // @ts-expect-error opsiyonel
+               
                 variant="hero"
               />
             </div>
@@ -43,30 +43,29 @@ export default function WomenListingPage() {
                      pb-16"
         >
           <ProductTile
-            title={crossbody.name}
-            price={crossbody.price}
-            image={crossbody.image}
-            alt={crossbody.alt}
-            href={`/women/${crossbody.id}`}
-          />
-          <div className="max-w-lg mx-auto">
-            <ProductTile
-              title={classic.name}
-              price={classic.price}
-              image={classic.image}
-              alt={classic.alt}
-              href={`/women/${classic.id}`}
-              // @ts-expect-error opsiyonel
-              variant="hero"
-            />
-          </div>
-          <ProductTile
-            title={laptop.name}
-            price={laptop.price}
-            image={laptop.image}
-            alt={laptop.alt}
-            href={`/women/${laptop.id}`}
-          />
+  title={crossbody.name}
+  price={crossbody.price}
+  image={crossbody.image}
+  alt={crossbody.alt}
+  href={`/women/${crossbody.id}`}
+/>
+{/* ... */}
+<ProductTile
+  title={classic.name}
+  price={classic.price}
+  image={classic.image}
+  alt={classic.alt}
+  href={`/women/${classic.id}`}
+  variant="hero"
+/>
+{/* ... */}
+<ProductTile
+  title={laptop.name}
+  price={laptop.price}
+  image={laptop.image}
+  alt={laptop.alt}
+  href={`/women/${laptop.id}`}
+/>
         </section>
       </main>
       <FooterSimple />
