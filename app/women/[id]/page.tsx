@@ -6,16 +6,19 @@ import { womenProducts } from "@/data/womenProducts";
 export const dynamic = "force-static";
 export const revalidate = 3600;
 
+// Statik yolları üret (SSG)
 export function generateStaticParams() {
   return womenProducts.map((p) => ({ id: p.id }));
 }
 
-export default function WomenProductDetailPage({
+// Ürün detay sayfası
+export default async function WomenProductDetailPage({
   params,
 }: {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }) {
-  const product = womenProducts.find((p) => p.id === params.id);
+  const { id } = await params; // ✅ params await edildi
+  const product = womenProducts.find((p) => p.id === id);
   if (!product) return notFound();
 
   return (
@@ -25,7 +28,7 @@ export default function WomenProductDetailPage({
       <div className="grid grid-cols-1 gap-10 lg:grid-cols-2">
         <div className="relative overflow-hidden rounded-3xl bg-[#f5efe6]/60">
           <Image
-            src={product.image} // /images/women/xxx.png
+            src={product.image}
             alt={product.alt}
             width={1200}
             height={1200}
