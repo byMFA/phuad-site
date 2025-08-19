@@ -15,9 +15,9 @@ export function generateStaticParams() {
 export default async function WomenProductDetailPage({
   params,
 }: {
-  params: Promise<{ id: string }>;
+  params: { id: string };
 }) {
-  const { id } = await params; // ✅ params await edildi
+  const { id } = params; // ✅ artık Promise değil
   const product = womenProducts.find((p) => p.id === id);
   if (!product) return notFound();
 

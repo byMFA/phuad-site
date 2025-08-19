@@ -6,18 +6,19 @@ import { menProducts } from "@/data/menProducts";
 export const dynamic = "force-static"; // CDN cache-friendly
 export const revalidate = 3600; // 1 saat
 
-// 1) Statik yolları üret (SSG)
+// Statik yolları üret (SSG)
 export function generateStaticParams() {
   return menProducts.map((p) => ({ id: p.id }));
 }
 
-// 2) Ürün detay sayfası
-export default function MenProductDetailPage({
+// Ürün detay sayfası
+export default async function MenProductDetailPage({
   params,
 }: {
   params: { id: string };
 }) {
-  const product = menProducts.find((p) => p.id === params.id);
+  const { id } = params; // ✅ artık Promise değil
+  const product = menProducts.find((p) => p.id === id);
   if (!product) return notFound();
 
   return (
@@ -28,7 +29,7 @@ export default function MenProductDetailPage({
         {/* Görsel */}
         <div className="relative overflow-hidden rounded-3xl bg-[#f5efe6]/60">
           <Image
-            src={product.image} // public/ altında: /images/men/xxx.png
+            src={product.image}
             alt={product.alt}
             width={1200}
             height={1200}
@@ -52,7 +53,7 @@ export default function MenProductDetailPage({
             </p>
           </div>
 
-          {/* Beden seçici – şimdilik placeholder */}
+          {/* Beden seçici */}
           <div className="flex items-center gap-3">
             <select
               aria-label="Beden seçin"
@@ -78,7 +79,7 @@ export default function MenProductDetailPage({
             </button>
           </div>
 
-          {/* CTA’lar – işlevsellik sonra eklenecek */}
+          {/* CTA’lar */}
           <div className="space-y-3">
             <button
               type="button"
@@ -94,7 +95,6 @@ export default function MenProductDetailPage({
             </button>
           </div>
 
-          {/* Basit açıklama (placeholder) */}
           <p className="text-sm leading-6 text-[#3a3a3a]">
             Premium kumaş, minimal tasarım. PHUΔD kalitesiyle ΔT serisi.
           </p>
