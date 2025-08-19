@@ -15,9 +15,10 @@ export function generateStaticParams() {
 export default async function MenProductDetailPage({
   params,
 }: {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }) {
-  const { id } = params; // ✅ artık Promise değil
+  // ✅ params'ı await ile bekleyin
+  const { id } = await params;
   const product = menProducts.find((p) => p.id === id);
   if (!product) return notFound();
 
@@ -79,7 +80,7 @@ export default async function MenProductDetailPage({
             </button>
           </div>
 
-          {/* CTA’lar */}
+          {/* CTA'lar */}
           <div className="space-y-3">
             <button
               type="button"
